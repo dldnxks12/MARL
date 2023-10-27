@@ -155,10 +155,70 @@
 
 - Challenges in MARL
     
-      1. Non-unique Learning Goals
-      2. Non-stationary issue
-      3. Scalability issue (combinatorial nature)
-      4. Various Information Structure (who knows what)
+      1. Non-unique Learning Goals issue.
+      : The learning goals of MARL can be vague at times. The most common goal is the convergence to NE.
+      This is a reasonable goal in game theory, under the assumption that the agents are all rational, and are
+      capable of perfectly reasoning and infinte mutual modeling of agents. 
+      However, with bounded rationality, the agents may only be able to perform finite mutual modeling. 
+      So, convergence to NE may not be justifiable for practical MARL agents. 
+     
+      Convergence is the dominant performance criterion for MARL algorithms so far. 
+      But, value-based MARL algorithms fail to converge to the stationary NE in general-sum MG.
+      -> Cyclic equilibrium are proposed. (not convergence to any NE policy.) 
+
+
+      2. Non-stationary issue.
+      : Multiple agents usually learns concurrently, causing the env faced by each agent to be 'non-stationary'.
+      The action, taken by one agent affects the reward of other agents, and the evolution of the state. 
+      As a result, the learning agent is required to account for how the other agents behave and adapt 
+      to the 'joint behavior'.
+
+      This invalidates the *stationary assumption for establishing the convergence of single agent RL algorithms.
+      And this precludes the direct use of mathematical tools for single-agent RL analysis in MARL. 
+
+        * stationary Markovian Property 
+        : The indivisual reward and current state depend only on the previous state and action taken.
+
+      Theoretically, if the agent ignores this issue and optimizes its own policy assuming a stationary env, 
+      the algirithms may fail to converge. (We call independant learner.)
+      But practically, it works well. 
+
+
+      3. Scalability issue (combinatorial nature of MARL.)
+      : To handle non-stationary problems mentioned above, each agent may need to account for the joint action space, 
+      whose dimension increases exponentially with the number of agents. 
+
+      One possible remedy for this issue is to assume additionally the factorized structures 
+      of either value or reward fucntions with regard to the action dependence.  
+
+
+      4. Various Information Structure issue (who knows what).
+      : Compared to the single-agent, the information structure of MARL is more involved at the training and execution.
+      In the framework of Markov Games, it suffices to observe the instantaneous state s, in order for each agent to make decisions.
+      On the other hand, for Extensive-Form Games, each agent may need to recall the history of past decisions, 
+      under the common perfect recall assumption. 
+
+      Furthermore, as self-interested agents, each agent cannot access either the policy or the rewards of the opponents,
+      at most the action samples taken by them. This partial information aggravates the issues caused by non-stationarity.
+
+      To mitigate this partial information issue, people assumes the existence of a 'central controller', that can 
+      collect information such as joint actions, joint rewards, and joint observations.
+      This is a popular learning scheme of 'centralized-learning-decentralized-execution'.
+      
+      - Cooperative Setting
+      : this scheme greatly simplifies the analysis, allowing the use of tools for single agent RL analysis.
+      
+      - Non-Coorperative Setting
+      : this scheme does not that simplify the analysis, as the learning goals of the agents are not aligned. 
+  
+      And such a central controller doe not exist in many cases. 
+      As a consequence, a fully decentralized and a decentralized learning with networked agents are proposed.
+      Independent learning is a special case of a fully decentralized learning. But for solving non-convergence issue in independent learning, agents are usually allowed to share local info,
+      with their neighbors over a communication network. 
+
+
+- 
+
 
 ---
   
