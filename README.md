@@ -41,9 +41,9 @@
 
 - Background : Single Agent (Fully observable / No delay) 
 
-      By Markovian property, the optimal polic can be obtained by dynamic programming 
-        - Value Iteration
-        - Policy Iteration
+      By Markovian property, the optimal policy can be obtained by dynamic programming 
+        - Value Iteration (VI)
+        - Policy Iteration (PI)
           
       But, VI, PI requires the knowledge of model (transition kernal, reward function)
       Then, learning the policy without knowing the model? Learns the policy from experiences!
@@ -54,7 +54,7 @@
             - Monte Carlo : SARSA, MCTS(UCB1)   
             - Temporal Difference : Q-Learning, DQN 
     
-          *Policy Based
+          *Policy Based (Gradient Descent)
             - REINFORCE, A2C
             - DDPG, TD3
             - TRPO, PPO 
@@ -88,7 +88,7 @@
       - Team-average reward 
       : Agents are allowed to have different reward functions, which may be kept private to each agent, 
       while the goal for cooperation is to optimize the long-term reward, corresponding to the average reward.
-      This allows more heterogeneity among agents, and perserves privany, and facilitates the development of 
+      This allows more heterogeneity among agents, and preserves privacy, and facilitates the development of 
       'decentralized' MARL algorithms.
 
 
@@ -108,7 +108,7 @@
       * ---------------- Extensive-Form Games ---------------- *
 
       Markov Games can only handle the fully observed case. (Need perfect information on the systems.)      
-      Then what aboutn imperfect information? Another framework named 'Extensive-Form Games' can hand it!
+      Then what about imperfect information? Another framework named 'Extensive-Form Games' can handle it!
       That is, Extensive-Form Games can handle imperfect information for multi-agent decision-making.
 
       - Imperfect information in extensive-form games? 
@@ -213,15 +213,20 @@
   
       And such a central controller doe not exist in many cases. 
       As a consequence, a fully decentralized and a decentralized learning with networked agents are proposed.
-      Independent learning is a special case of a fully decentralized learning. But for solving non-convergence issue in independent learning, agents are usually allowed to share local info,
-      with their neighbors over a communication network. 
-
-
-- 
+      Independent learning is a special case of a fully decentralized learning. But for solving non-convergence issue in independent learning, 
+      agents are usually allowed to share local info with their neighbors over a communication network. 
 
 
 ---
   
+- MARL Algorithms with Theory
 
+
+    : A selective review of MARL algorithms. And categorizes them according to the tasks to address.
+
+
+1. Cooperative Setting
+2. Competitive Setting
+3. Mixed Setting
 
 
