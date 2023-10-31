@@ -183,6 +183,12 @@
       the algirithms may fail to converge. (We call independant learner.)
       But practically, it works well. 
 
+      * Repeated Update Q-Learning (RUQL)
+      * Deep Loosely Coupled Q-Network (DLCON)
+      * 
+      * 
+      * Lenient-DQN (LDQN)
+
 
       3. Scalability issue (combinatorial nature of MARL.)
       : To handle non-stationary problems mentioned above, each agent may need to account for the joint action space, 
